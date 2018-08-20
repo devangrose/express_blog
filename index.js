@@ -13,6 +13,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 
+// Include contollers/routers
+app.use('/articles',require('./controllers/articles'));
+app.use('/authors', require('./controllers/authors'));
+
 // Define routes
 app.get('/', function (req, res) {
     res.render('home');
