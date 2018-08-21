@@ -2,6 +2,17 @@
     <h1><%= article.title %></h1>
 
     <h3>By: <a href="/authors/<%=article.author.id%>"><%=article.author.name%></a></h3>
+</div>
+<div>
+    <% if(article.tags && article.tags.length > 0) { %>
+    <% article.tags.forEach(function (t) { %>
+        <h4 style="display:inline;"><a href="/tags/<%=t.id%>">#<%=t.name%></a></h4>
+    <% }); %>
+    <% } else { %>
+    <p>No tags yet!</p>
+    <% } %>
+</div>
+<div>
 
     <p><%= article.content %></p>
 </div>
