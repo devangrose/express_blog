@@ -16,6 +16,7 @@ app.use(ejsLayouts);
 // Include contollers/routers
 app.use('/articles',require('./controllers/articles'));
 app.use('/authors', require('./controllers/authors'));
+app.use('/comments',require('./controllers/comments.js'));
 
 // Define routes
 app.get('/', function (req, res) {
