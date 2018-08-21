@@ -1,13 +1,11 @@
-<div class="container">
-    <form method="POST" action="/authors">
-        <div class="form-group">
-            <label for="author-name">Author:</label>
-            <input class="form-control" type="text" name="name" id="author-name">
-            <label for="image">Profile Image:</label>
-            <input type="url" name="image" class="form-control">
-            <label for="bio">Article Content:</label>
-            <textarea class="form-control" name="bio" id="content"></textarea>
-            <button class="btn btn-primary form-control" type="submit" id="submit-btn">Submit</button>
-        </div>
-    </form>
-</div>
+<form method="POST" action="/authors">
+    <div class="form-group">
+        <label for="author-name">Author:</label>
+        <input class="form-control" type="text" name="name" id="author-name" required>
+        <label for="image">Profile Image:</label>
+        <input type="url" name="image" class="form-control" required>
+        <label for="bio">Article Content:</label>
+        <textarea class="form-control" name="bio" id="content"></textarea>
+        <button class="btn btn-primary form-control" type="submit" id="submit-btn">Submit</button>
+    </div>
+</form>

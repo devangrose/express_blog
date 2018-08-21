@@ -21,6 +21,9 @@ app.use('/authors', require('./controllers/authors'));
 app.get('/', function (req, res) {
     res.render('home');
 });
+app.get('*', function (req, res) {
+    res.render('error');
+});
 
 // listen on port 3000
 app.listen(3000, function (){

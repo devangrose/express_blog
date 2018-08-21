@@ -1,8 +1,6 @@
-<div class="container">
-    <h1> All the Articles!</h1>
-    <% articles.forEach(function (article){ %>
-        <div>
-            <h3><a href="/articles/<%=article.id%>"><%=article.title%></a> By: <a href="/authors/<%=article.author.id%>"><%=article.author.name%></a></h3>
-        </div>
-    <% }); %>
-</div>
+<h1> All the Articles!</h1>
+<% articles.forEach(function (article){ %>
+    <div>
+        <h3><a href="/articles/<%=article.id%>"><%=article.title%></a> By: <a href="/authors/<%=article.author.id%>"><%=article.author.name%></a></h3>
+    </div>
+<% }); %>

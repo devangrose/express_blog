@@ -4,8 +4,10 @@ var db = require('../models');
 
 router.get('/', function (req, res){
     db.author.findAll().then(function(authors){
-        console.log(authors);
         res.render('authors/index', {authors: authors});
+    }).catch(function (err){
+        console.log(err);
+        res.render('error');
     });
 });
 router.get('/new',function (req, res){
@@ -19,7 +21,7 @@ router.get('/:id',function (req, res){
         res.render('authors/show', {author: foundAuthor});
     }).catch(function (err){
         console.log(err);
-        res.send("I can't find that Author");
+        res.render('error');
     });
 });
 router.post('/', function (req, res){
@@ -27,7 +29,7 @@ router.post('/', function (req, res){
         res.redirect('/authors/' + createdAuthor.id);
     }).catch(function(err){
         console.log(err);
-        res.send('derp');
+        res.render('error');
     });
 });
 

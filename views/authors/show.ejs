@@ -1,25 +1,23 @@
 <h2> All about <%= author.name %>
-<div class="container">
-    <div class="row">
-        <div class="col-6">
-            <img src="<%= author.image %>" style="max-width: 100%; height: auto;"> 
-        </div>
-        <div class="col-6">
-            <h1><%=author.name%>'s bio</h1>
-            <p>
-                <%= author.bio %>
-            </p>
-        </div>
+<div class="row">
+    <div class="col-6">
+        <img src="<%= author.image %>" style="max-width: 100%; height: auto;"> 
     </div>
-    <div class="row" style="margin-top: 100px;">
-        <div class="col-12">
-            <h3> Articles by <%= author.name %></h3>
-            <% author.articles.forEach(function(article){ %>
-                <div>
-                    <hr>
-                    <a href="/articles/<%=article.id%>"><%=article.title%></a>
-                </div>
-            <% }); %>
-        </div>
+    <div class="col-6">
+        <h1><%=author.name%>'s bio</h1>
+        <p>
+            <%= author.bio %>
+        </p>
+    </div>
+</div>
+<div class="row" style="margin-top: 100px;">
+    <div class="col-12">
+        <h3> Articles by <%= author.name %></h3>
+        <% author.articles.forEach(function(article){ %>
+            <div>
+                <hr>
+                <a href="/articles/<%=article.id%>"><%=article.title%></a>
+            </div>
+        <% }); %>
     </div>
 </div>
