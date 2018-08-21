@@ -1,1 +1,9 @@
-<h2> All the articles are belong to us</h2>
+<h3> All the authors are belong to us</h3>
+
+<% authors.forEach(function(author){ %>
+    <div>
+        <h2><a href="/authors/<%=author.id%>">
+            <%=author.name %>
+        </a></h2>
+    </div>
+<% }); %>
