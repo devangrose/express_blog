@@ -6,3 +6,5 @@
         <a href="/articles/<%= article.id %>"><%= article.title %></a>
     </div>
 <% }); %>
+    <a href="/tags/edit/<%=tag.id%>" class="btn btn-warning edit-btn">Edit</a>
+    <a href="/tags/<%=tag.id%>" class="btn btn-danger delete-btn">Delete</a>

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
+var async = require('async');
 
 
 router.get('/', function (req, res) {
@@ -24,7 +25,37 @@ router.get('/:id', function(req,res) {
     });
 });
 router.delete('/:id', function (req, res) {
-    res.send('DELETE!');
+    db.tag.findOne({
+        where: {id: req.params.id},
+        include: [db.article]
+    }).then(function (foundTag) {
+        async.forEach(foundTag.articles, function(a, done){
+            // Runs for each article
+            // Remove the association from the join table
+            foundTag.removeArticle(a).then(function(){
+                done();  
+            });
+        },function(){
+            // Runs when everything is done
+            // Now that the references in the join table are gone, we can delete the tag
+            db.tag.destroy({
+                where: {id : req.params.id }
+            }).then(function () {
+                res.send('SUCCESSFULLY DELETED');
+            }).catch(function (err){
+                res.status(500).send('OH NOO');  
+            });
+            
+        });
+    }).catch(function (err) {
+        console.log(err);
+        res.status(500).send('OH NOOO');
+    });
+});
+router.get('/edit/:id', function (req, res) {
+    db.tag.findById(req.params.id).then(function (foundTag) {
+        res.render('tags/edit',{tag: foundTag});
+    });
 });
 
 module.exports = router;
