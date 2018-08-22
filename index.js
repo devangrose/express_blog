@@ -12,11 +12,13 @@ var db = require('./models');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
+app.use(express.static(__dirname + '/public/'));
 
 // Include contollers/routers
 app.use('/articles',require('./controllers/articles'));
 app.use('/authors', require('./controllers/authors'));
 app.use('/comments',require('./controllers/comments.js'));
+app.use('/tags', require('./controllers/tags.js'));
 
 // Define routes
 app.get('/', function (req, res) {
