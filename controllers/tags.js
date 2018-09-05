@@ -57,5 +57,7 @@ router.get('/edit/:id', function (req, res) {
         res.render('tags/edit',{tag: foundTag});
     });
 });
-
+router.put('/:id', function (req, res) {
+    res.send(req.body);
+});
 module.exports = router;

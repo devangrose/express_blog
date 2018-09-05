@@ -16,5 +16,15 @@ $(document).ready(function () {
 
     $('#edit-tag').submit(function (e) {
         e.preventDefault();
+        
+        $.ajax({
+            url: $(this).attr('action'),
+            method:'PUT',
+            data: $(this).serialize()
+        }).done(function (res) {
+            console.log(res);
+        }).fail(function (err){
+            console.log(err);
+        });
     });
 });
